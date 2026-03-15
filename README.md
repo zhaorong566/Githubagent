@@ -1,6 +1,20 @@
 # GitHub Assistant Agent
 
+[![CI](https://github.com/zhaorong566/Githubagent/actions/workflows/ci.yml/badge.svg)](https://github.com/zhaorong566/Githubagent/actions/workflows/ci.yml)
+
 一个专业的 GitHub 开发助手 Agent，帮助开发者高效完成：**需求理解、Issue 分析、代码定位、修复方案设计、测试建议、PR 文案生成、Review 建议与风险识别**。
+
+> **💡 看到仓库是空的？**
+>
+> 当前所有代码都在 [Pull Request](../../pulls) 分支上，尚未合并到 `main`。
+> 请在 GitHub 页面点击 **"Merge pull request"** 将代码合并到主分支，之后仓库就会显示完整内容。
+>
+> 或者直接克隆 PR 分支开始使用：
+> ```bash
+> git clone -b copilot/develop-github-assistant-agent \
+>     https://github.com/zhaorong566/Githubagent.git
+> cd Githubagent
+> ```
 
 ---
 
@@ -25,6 +39,8 @@
 git clone https://github.com/zhaorong566/Githubagent.git
 cd Githubagent
 pip install -r requirements.txt
+# 或者使用 make:
+make install
 ```
 
 ### 2. 配置环境变量
@@ -78,8 +94,13 @@ Githubagent/
 ├── main.py              # CLI 入口（Click）
 ├── agent.py             # 核心 Agent 逻辑
 ├── config.py            # 配置管理（从环境变量加载）
+├── pyproject.toml       # Python 包配置（可 pip install）
 ├── requirements.txt     # Python 依赖
+├── Makefile             # 便捷命令（make install / test / chat）
 ├── .env.example         # 环境变量模板
+├── .github/
+│   └── workflows/
+│       └── ci.yml       # GitHub Actions CI（自动运行测试）
 ├── prompts/
 │   ├── __init__.py
 │   └── system_prompt.py # 系统提示词与输出模板
@@ -115,6 +136,8 @@ Githubagent/
 ## 🧪 运行测试
 
 ```bash
+make test
+# 或者：
 pip install pytest
 python -m pytest tests/ -v
 ```
